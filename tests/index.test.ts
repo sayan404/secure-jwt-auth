@@ -4,7 +4,7 @@ import {
   SuccessEncodeReponse, 
   DecodeReponse, 
   EncodeReponse 
-} from "../dist/type";
+} from "../src/type";
 
 
 const secret = "your-256-bit-secret";

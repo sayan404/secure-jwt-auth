@@ -1,16 +1,16 @@
 {
-  "name": "auth-blitz",
+  "name": "secure-jwt-auth",
   "version": "1.0.0",
-  "main": "src/index.js",
-  "types": "src/type.ts",
+  "main": "src/index.d.ts",
+  "types": "src/type.d.ts",
   "description": "A simple and lightweight utility library for encoding, decoding, and validating JSON Web Tokens in TypeScript.",
   "repository": {
-    "url": "https://github.com/sayan404/auth-blitz"
+    "url": "git+https://github.com/sayan404/secure-jwt-auth.git"
   },
-  "homepage": "https://documenter.getpostman.com/view/23890489/2sA3kYk1Mc",
+  "homepage": "https://documenter.getpostman.com/view/23890489/2sA3kYk1S8",
   "scripts": {
-    "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "test" : "jest"
   },
   "keywords": [
     "jwt",

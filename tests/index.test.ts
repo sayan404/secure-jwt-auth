@@ -1,11 +1,10 @@
-import { genToken, decodeToken, validateToken } from "../src/index";
-import { 
-  ErrorDecodeResponse, 
-  SuccessEncodeReponse, 
-  DecodeReponse, 
-  EncodeReponse 
+import { genToken, decodeToken, validateToken } from "../dist/index";
+import {
+  ErrorDecodeResponse,
+  SuccessEncodeResponse,
+  DecodeResponse,
+  EncodeResponse,
 } from "../dist/type";
-
 
 const secret = "your-256-bit-secret";
 const id = "12345";
@@ -18,7 +17,7 @@ describe("JWT Package", () => {
   let token: string;
 
   test("should encode a JWT with given payload, aud, iss, and ttl", () => {
-    const result: EncodeReponse = genToken(
+    const result: EncodeResponse = genToken(
       secret,
       id,
       payload,
@@ -29,7 +28,7 @@ describe("JWT Package", () => {
     expect(result.success).toBe(true);
 
     if (result.success) {
-      token = (result as SuccessEncodeReponse).token;
+      token = (result as SuccessEncodeResponse).token;
       expect(typeof token).toBe("string");
     }
   });
@@ -60,7 +59,7 @@ describe("JWT Package", () => {
   });
 
   test("should invalidate an expired JWT", () => {
-    const expiredTokenResponse: EncodeReponse = genToken(
+    const expiredTokenResponse: EncodeResponse = genToken(
       secret,
       id,
       payload,
@@ -69,9 +68,9 @@ describe("JWT Package", () => {
       issuer
     ); // Token that expires immediately
     if (expiredTokenResponse.success) {
-      const result: DecodeReponse = decodeToken(
+      const result: DecodeResponse = decodeToken(
         secret,
-        (expiredTokenResponse as SuccessEncodeReponse).token
+        (expiredTokenResponse as SuccessEncodeResponse).token
       );
       expect(result.success).toBe(false);
 

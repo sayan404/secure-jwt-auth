@@ -1,5 +1,5 @@
 import * as crypto from "crypto";
-import { DecodeReponse, EncodeReponse } from "./type";
+import { DecodeResponse, EncodeResponse } from "./type";
 const base64UrlEncode = (input: string): string => {
   return input.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
 };
@@ -60,7 +60,7 @@ export const genToken = (
   ttl?: number,
   aud?: string,
   iss?: string
-): EncodeReponse => {
+): EncodeResponse => {
   const header = {
     alg: "HS256",
     typ: "JWT",
@@ -72,7 +72,7 @@ export const genToken = (
     ...payload,
     id,
     iat: issuedAt,
-    ...(ttl ? { exp: issuedAt + ttl } : { exp: issuedAt }),
+    ...(ttl ? { exp: issuedAt + ttl } : { exp: issuedAt + 3600000 }),
     ...(aud ? { aud } : {}),
     ...(iss ? { iss } : {}),
   };
@@ -84,7 +84,7 @@ export const genToken = (
   }
 };
 
-export const decodeToken = (secret: string, token: string): DecodeReponse => {
+export const decodeToken = (secret: string, token: string): DecodeResponse => {
   try {
     const { _id, iat, exp, payload, aud, iss } = decode(secret, token);
     if (exp && exp <= Math.floor(Date.now() / 1000))

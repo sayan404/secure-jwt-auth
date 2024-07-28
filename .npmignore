@@ -1,7 +1,8 @@
-/src
-/test
+src/
+tests/
 .env
 .env.local
-node_modules
+node_modules/
 tsconfig.json
-jest.config.json
+jest.config.js
+package-lock.json

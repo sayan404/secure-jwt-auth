@@ -1,6 +1,14 @@
-# auth-blitz
+<p align="center">
+  <img src="https://firebasestorage.googleapis.com/v0/b/uploadika-b352f.appspot.com/o/images%2Fsecure-jwt.png?alt=media&token=0f3ecf86-a6b4-49ec-a3af-7de8213ee11a" alt="secure-jwt-auth">
+</p>
 
-`auth-blitz` is a lightweight package for creating, decoding, and validating JSON Web Tokens (JWTs) with support for basic JWT features. It provides three core methods for JWT operations:
+
+<br>
+<br>
+
+# secure-jwt-auth
+
+`secure-jwt-auth` is a lightweight package for creating, decoding, and validating JSON Web Tokens (JWTs) with support for basic JWT features. It provides three core methods for JWT operations:
 
 - `genToken`
 - `decodeToken`
@@ -28,22 +36,24 @@
 
 ## Installation
 
-To install `auth-blitz`, use npm:
+To install `secure-jwt-auth`, use npm:
 
 ```bash
-npm install auth-blitz
+npm install secure-jwt-auth
 ```
 
 # Usage
 
 ### Encoding a JWT
 
+Note : Although timeToLive is an optional parameter, we set a 1-hour validation for the token by default.
+
 To encode a JWT, use the genToken method:
 
 ```bash
-import { genToken } from 'auth-blitz';
+import { genToken } from 'secure-jwt-auth';
 
-const token = genToken(SECRET, id , payload , ttl);
+const token = genToken(SECRET, id , payload , timeToLive , audience , issuer);
 ```
 
 ### Decoding a JWT
@@ -51,7 +61,7 @@ const token = genToken(SECRET, id , payload , ttl);
 To decode a JWT, use the decodeToken method:
 
 ```bash
-import { decodeToken } from 'auth-blitz';
+import { decodeToken } from 'secure-jwt-auth';
 
 const decoded = decodeToken(SECRET, token);
 ```
@@ -61,16 +71,15 @@ const decoded = decodeToken(SECRET, token);
 To validate a JWT, use the validateToken method:
 
 ```bash
-import { validateToken } from 'auth-blitz';
+import { validateToken } from 'secure-jwt-auth';
 
 const isValid = validateToken(SECRET, token);
 ```
 
-
 ## API Playground
 
-Explore and interact with the `simpler-jwt-auth` package using the API Playground set up for testing. You can experiment with encoding, decoding, and validating JWTs through the following link:
+Explore and interact with the `secure-jwt-auth` package using the API Playground set up for testing. You can experiment with encoding, decoding, and validating JWTs through the following link:
 
-### **[API Playground on Postman](https://documenter.getpostman.com/view/23890489/2sA3kYk1Mc)**
+### **[API Playground on Postman](https://documenter.getpostman.com/view/23890489/2sA3kYk1S8)**
 
 Feel free to test various endpoints and see how the package functions in different scenarios and if something weired occurs please feel free to reach out to me at sayanmajumder0002@gmail.com.
